@@ -11,7 +11,7 @@ const textSwitchPlugin = {
     <span id="default${ data.randomId }" onclick="document.getElementById('alternate${ data.randomId }').style.display='inline'; document.getElementById('default${ data.randomId }').style.display='none';">${ data.defaultText }</span>
     <span id="alternate${ data.randomId }" style="display: none" onclick="document.getElementById('default${ data.randomId }').style.display='inline'; document.getElementById('alternate${ data.randomId }').style.display='none';">${ data.alternateText }</span>
   `,
-  pattern: /^{{<\s?textswitch {(\S+)} {(\S+)}\s?>}}/,
+  pattern: /^{{<\s?textswitch {(.+)} {(.+)}\s?>}}/,
   fields: [
     {name: 'defaultText', label: 'Default Text'},
     {name: 'alternateText', label: 'Alternate Text'}
