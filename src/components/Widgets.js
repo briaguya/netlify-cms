@@ -30,6 +30,7 @@ import BooleanControl from './Widgets/BooleanControl';
 import ImagePlugin from './Plugins/ImagePlugin';
 import YoutubePlugin from './Plugins/YoutubePlugin';
 import TextSwitchPlugin from './Plugins/TextSwitchPlugin';
+import DejargonPlugin from './Plugins/DejargonPlugin.js';
 
 registry.registerWidget('string', StringControl, StringPreview);
 registry.registerWidget('text', TextControl, TextPreview);
@@ -49,6 +50,7 @@ registry.registerWidget('unknown', UnknownControl, UnknownPreview);
 registry.registerEditorComponent(ImagePlugin);
 registry.registerEditorComponent(YoutubePlugin);
 registry.registerEditorComponent(TextSwitchPlugin);
+registry.registerEditorComponent(DejargonPlugin);
 
 export function resolveWidget(name) { // eslint-disable-line
   return registry.getWidget(name || 'string') || registry.getWidget('unknown');
