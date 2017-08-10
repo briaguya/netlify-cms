@@ -27,6 +27,8 @@ import RelationControl from './Widgets/RelationControl';
 import RelationPreview from './Widgets/RelationPreview';
 import BooleanControl from './Widgets/BooleanControl';
 
+import ImagePlugin from './Plugins/ImagePlugin';
+import YoutubePlugin from './Plugins/YoutubePlugin';
 
 registry.registerWidget('string', StringControl, StringPreview);
 registry.registerWidget('text', TextControl, TextPreview);
@@ -42,6 +44,9 @@ registry.registerWidget('object', ObjectControl, ObjectPreview);
 registry.registerWidget('relation', RelationControl, RelationPreview);
 registry.registerWidget('boolean', BooleanControl);
 registry.registerWidget('unknown', UnknownControl, UnknownPreview);
+
+registry.registerEditorComponent(ImagePlugin);
+registry.registerEditorComponent(YoutubePlugin);
 
 export function resolveWidget(name) { // eslint-disable-line
   return registry.getWidget(name || 'string') || registry.getWidget('unknown');

@@ -29,27 +29,6 @@ if (module.hot) {
   module.hot.accept('./root', () => { render(Root); });
 }
 
-const buildtInPlugins = [{
-  label: 'Image',
-  id: 'image',
-  fromBlock: match => match && {
-    image: match[2],
-    alt: match[1],
-  },
-  toBlock: data => `![${ data.alt }](${ data.image })`,
-  toPreview: data => <img src={data.image} alt={data.alt} />,
-  pattern: /^!\[([^\]]+)]\(([^)]+)\)$/,
-  fields: [{
-    label: 'Image',
-    name: 'image',
-    widget: 'image',
-  }, {
-    label: 'Alt Text',
-    name: 'alt',
-  }],
-}];
-buildtInPlugins.forEach(plugin => registry.registerEditorComponent(plugin));
-
 const CMS = {};
 for (const method in registry) { // eslint-disable-line
   CMS[method] = registry[method];
