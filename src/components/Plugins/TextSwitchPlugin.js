@@ -1,25 +1,20 @@
 const textSwitchPlugin = {
   id: "textswitch",
-  label: "Text Switch",
+  label: "Text Switch",  
+  fromBlock: match => match && {
+    defaultText: match[1],
+    alternateText: match[2]
+  },
+  toBlock: data => `{{< textswitch {${ data.defaultText }} {${ data.alternateText }} >}}`,
+  toPreview: data => `
+    <span id="default">${ data.defaultText }</span>
+    <span id="alternate" style="visibility: hidden">${ data.alternateText }</span>
+  `,
+  pattern: /^{{<\s?textswitch {(\S+)} {(\S+)}\s?>}}/,
   fields: [
     {name: 'defaultText', label: 'Default Text'},
     {name: 'alternateText', label: 'Alternate Text'}
-  ],
-  pattern: /^!\[([^\]]+)]\(([^)]+)\)$/,
-  fromBlock: function(match) {
-    return {
-      defaultText: match[1],
-      alternateText: match[2]
-    };
-  },
-  toBlock: function(obj) {
-    return '{{< default: ' + obj.defaultText + ', alternateText: ' + obj.alternateText + ' >}}';
-  },
-  toPreview: function(obj) {
-    return (
-      '<div>default: ' + obj.defaultText + 'alternateText: ' + obj.alternateText + ' </div>'
-    );
-  }
+  ]
 };
 
 export default textSwitchPlugin;
